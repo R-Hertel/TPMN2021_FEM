@@ -49,3 +49,11 @@ To summarize, the comparison of the accuracy discussed here concerns two differe
 2. a specialized higher-order formula tailored to treat that problem.
 
 The different degree of accuracy of these two approaches is not relevant for a general comparison of the FEM and the FDM. The accuracy of the linear FEM can be improved if the mass-lumping approximation is not used. Moreover, the two approximations compared here are not of the same order. One should thus not draw general conclusions from this regarding the accuracy of the FDM or the FEM. Nevertheless, the higher-order finite-difference formula is a remarkable addition to the numerical treatment of this specific example, and it can be helpful to use such recipes in certain situations. 
+
+## Addendum: Mass-lumping vs. weak derivative
+A short test shows that calculating the weak derivative yields practically the same result as the mass-lumped calculation of the derivative discussed in the lecture.  
+
+![linear FEM calculation of the first derivative, with and without mass lumping](figures/Figure_2.png "impact of mass-lumping")
+
+The accuracy improvement obtained from using the weak form is minimal compared to the simpler and faster mass-lumped approximation. Since the mass-lumping does not entail a significant loss of accuracy, higher-order interpolations are required to improve the precision noticeably. 
+
