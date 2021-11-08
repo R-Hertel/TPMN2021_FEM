@@ -55,5 +55,23 @@ A short test shows that calculating the weak derivative yields practically the s
 
 ![linear FEM calculation of the first derivative, with and without mass lumping](figures/Figure_2.png "impact of mass-lumping")
 
-The accuracy improvement obtained from using the weak form is minimal compared to the simpler and faster mass-lumped approximation. Since the mass-lumping does not entail a significant loss of accuracy, higher-order interpolations are required to improve the precision noticeably. 
+The code discussed in the lecture is extended by the following routine in order to calculate the weak derivative:
+
+````python 
+
+def assemble_mass_mat(N, h):
+    M = np.zeros(shape=(N+1, N+1))
+    for i in range(0, N):
+        M[i][i] += h[i] * 1/3
+        M[i][i+1] += h[i] * 1/6
+        M[i+1][i] += h[i] * 1/6
+        M[i+1][i+1] += h[i] * 1/3
+    return M
+
+M = assemble_mass_mat(N, myElementSizes)
+node_area = calc_node_area(myElementSizes, myElementNodes)
+weak_dev = np.linalg.solve(M, f_grad_nodes * node_area) 
+
+```` 
+The accuracy improvement obtained from using the weak form `weak_dev` is minimal compared to the simpler and faster mass-lumped approximation `f_grad_nodes`. Since the mass-lumping does not entail a significant loss of accuracy, one can conclude that higher-order interpolations are required to improve the precision noticeably. 
 
