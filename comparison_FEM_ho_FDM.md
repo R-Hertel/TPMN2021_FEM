@@ -73,5 +73,5 @@ node_area = calc_node_area(myElementSizes, myElementNodes)
 weak_dev = np.linalg.solve(M, f_grad_nodes * node_area) 
 
 ```` 
-The accuracy improvement obtained from using the weak form `weak_dev` is minimal compared to the simpler and faster mass-lumped approximation `f_grad_nodes`. Since the mass-lumping does not entail a significant loss of accuracy, one can conclude that higher-order interpolations are required to improve the precision noticeably. 
+The accuracy improvement obtained by using the weak form `weak_dev` instead of the simpler and faster mass-lumped approximation `f_grad_nodes` is negligible. Since the mass-lumping does not entail a significant loss of accuracy, one can conclude that higher-order interpolations are required to improve the precision noticeably. 
 
